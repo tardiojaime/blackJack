@@ -1,0 +1,16 @@
+services:
+  node:
+    container_name: 'node-18'
+    image: node:18.20.3
+    working_dir: /app
+    volumes:
+      - ./:/app
+    #restart: always
+    user: "1000:1000" # uid y gid del usuario en el contenedor
+    # para crear el proyecto
+    #command: sh -c "npm create vite@latest app -- --template vanilla && cd app && npm install && npm run dev"
+    # una ves instalado y agregado la configuracion de vite
+    # para que escuche en cualquier interfas
+    command: sh -c "cd app && npm run dev"
+    ports:
+      - "5173:5173"
